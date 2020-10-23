@@ -12,7 +12,7 @@
 <body>
 	<br />
 	<form method="POST" id="inputForm">
-		<input id="message" name="message" value="hello!!" type="text">
+		<!--<input id="message" name="message" value="hello!!" type="text">-->
 		<!--<button type="submit" style="width:100px;">Go ...</button>-->
 		<ul class="nav">
 			<li><a href=""> Menu </a>
@@ -39,22 +39,23 @@
 			<tr>
 				<!-- CONSOLA DE ENTRADA -->
 				<td width="60%">
-					<div id="Editor" style="height: 300px; width: 90%">numeric a=0.0;
-while(true){
-a = "hola"+":)"+59.5*12.2+(10.9*12.12-56.56/0.1);
-print(a+b||c>d);
-}</div>
+					<div id="Editor" name="Editor" style="height: 300px; width: 90%">numeric a=0.0;
+						while(true){
+						a = "hola"+":)"+59.5*12.2+(10.9*12.12-56.56/0.1);
+						print(a+b||c>d);
+						}</div>
 				</td>
 				<!-- CONSOLAS DE SALIDAS -->
 				<td>
 					<strong>Consola Python:</strong>
-					<div id="consolapython" style="height: 190px; width: 90%"></div>
+					<div id="consolapython" style="height: 190px; width: 90%"><div id="contentpy"></div></div>
 					<strong>Consola Javascript:</strong>
-					<div id="consolajavascript" style="height: 190px; width: 90%" editable=false></div>
+					<div id="consolajavascript" style="height: 190px; width: 90%"><div id="contentjs"></div></div>
 				</td>
 			</tr>
 		</table>
 	</form>
+	<script type="text/javascript" src="/src/main.js"></script>
 	<script type="text/javascript">
 
 		var editor = ace.edit("Editor");
@@ -79,6 +80,6 @@ print(a+b||c>d);
     es como una declaracion global de cada uno de ellos 
 -->
 </body>
-<script src="/src/main.js"></script>
+
 
 </html>
