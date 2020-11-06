@@ -176,6 +176,29 @@ function analizar() {
         });
 }
 
+function analizarpy() {
+    var centrada = document.getElementById("contenido_archivo" + publico_id);
+    var texto = centrada.value + " ";
+    var url = 'http://localhost:3500/analisis';
+    var data = { id: '"' + publico_id + '"', datos: texto };
+    fetch(url, {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(data), // data can be `string` or {object}!
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.json())
+        //.catch(error => console.error('Error:', error))
+        //.then(response => console.log('Success:', response));
+        .catch(function (error) {
+            alert(error);
+        })
+        .then(function (response) {
+            var consola_errores = document.getElementById("txtsalida1" + publico_id);
+            consola_errores.innerHTML = "";
+            consola_errores.innerHTML += response;
+        });
+}
 
 function jstree() {
     var centrada = document.getElementById("contenido_archivo" + publico_id);
@@ -204,8 +227,23 @@ function jstree() {
 
 }
 
-function imprimirPDF(tockens) {
-
-
-
+function guardarCodigoPDF() {
+    var doc = new jsPDF();
+    doc.setFont("helvetica");
+    doc.setFontSize(12);
+    var centrada = document.getElementById("contenido_archivo" + publico_id);
+    var texto = centrada.value + " ";
+    var separator = texto.split("\n");
+    var separacion_linea = 20;
+    doc.text(10, separacion_linea, separator[0]);
+    for (let i = 1; i < separator.length; i++) {
+        if (i % 40 == 0) {
+            separacion_linea = 20;
+            doc.addPage();
+        } else {
+            separacion_linea += 6;
+            doc.text(10, separacion_linea, separator[i]);
+        }
+    }
+    doc.save('CodigoJavascript.pdf');
 }

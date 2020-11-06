@@ -21,7 +21,7 @@ func main() {
 		MaxHeaderBytes: 1 << 20,
 	}
 
-	log.Println("Servidor escuchando en: http://localhost:8001/")
+	log.Println("Servidor escuchando en: http://localhost:7000/")
 	log.Fatal(server.ListenAndServe())
 
 }
